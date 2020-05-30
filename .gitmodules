@@ -36,7 +36,7 @@
 	url = https://github.com/minecraft-linux/cll-telemetry.git
 [submodule "minecraft-imported-symbols"]
 	path = minecraft-imported-symbols
-	url = https://github.com/minecraft-linux/minecraft-imported-symbols.git
+	url = https://github.com/ChristopherHX/minecraft-imported-symbols.git
 [submodule "mcpelauncher-common"]
 	path = mcpelauncher-common
 	url = https://github.com/minecraft-linux/mcpelauncher-common.git
