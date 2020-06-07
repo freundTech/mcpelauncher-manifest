@@ -76,3 +76,9 @@
 [submodule "mcpelauncher-linker"]
 	path = mcpelauncher-linker
 	url = https://github.com/minecraft-linux/mcpelauncher-linker.git
+[submodule "json"]
+	path = json
+	url = https://github.com/nlohmann/json.git
+[submodule "glfw"]
+	path = glfw
+	url = https://github.com/glfw/glfw.git
