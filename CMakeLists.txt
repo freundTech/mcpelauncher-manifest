@@ -54,6 +54,7 @@ endfunction()
 git_commit_hash(${CMAKE_SOURCE_DIR} MANIFEST_GIT_COMMIT_HASH)
 
 option(BUILD_CLIENT "Enables building of the client launcher." ON)
+option(BUILD_WEBVIEW "Enables building of the login webview." ON)
 option(BUILD_TESTING "Build tests for cll-telemetry (requires GTest)" OFF)
 
 if (APPLE)
@@ -128,10 +129,18 @@ if (BUILD_CLIENT)
     add_subdirectory(mcpelauncher-client)
 endif()
 
+if (BUILD_WEBVIEW)
+    add_subdirectory(mcpelauncher-webview)
+endif()
+
 install(DIRECTORY ${NATIVES_PATH_LIB_DIR} COMPONENT mcpelauncher-bin-libs DESTINATION share/mcpelauncher PATTERN "*"
         PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ)
 
-option(MSA_DAEMON_PATH "Additional paths in which the MSA daemon should be looked in. Relative to the application directory." )
+option(MSA_DAEMON_PATH "Additional paths in which the MSA daemon should be looked for. Relative to the application directory." )
 if (MSA_DAEMON_PATH)
     target_compile_definitions(mcpelauncher-client PRIVATE -DMSA_DAEMON_PATH="${MSA_DAEMON_PATH}")
+endif()
+option(MCPELAUNCHER_WEBVIEW_PATH "Additional paths in which the mcpelauncher-webview should be looked for. Relative to the application directory." )
+if (MCPELAUNCHER_WEBVIEW_PATH)
+    target_compile_definitions(mcpelauncher-client PRIVATE -DMCPELAUNCHER_WEBVIEW_PATH="${MCPELAUNCHER_WEBVIEW_PATH}")
 endif()
